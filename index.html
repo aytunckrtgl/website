@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Mochi Slide is a pastel ice parkour. Steer, blink, and reach the finish. You cannot stop.">
+<meta name="description" content="Slide Ninja is a mobile ice game. You are Ninja. You don't run. You only slide.">
 <meta name="theme-color" content="#d7f1fa">
-<title>Mochi Slide — slide, blink, finish</title>
+<title>Slide Ninja — you only slide</title>
 <link rel="icon" href="icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -246,38 +246,38 @@
 <body>
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top"><img src="icon.png" alt="">Mochi Slide</a>
+    <a class="brand" href="#top"><img src="icon.png" alt="">Slide Ninja</a>
     <nav class="nav-links" aria-label="Page">
-      <a href="#run">Run</a>
+      <a href="#menu">Menu</a>
       <a href="#controls">Controls</a>
       <a href="#cast">Cast</a>
-      <a href="#courses">Courses</a>
+      <a href="#levels">Levels</a>
     </nav>
-    <a class="btn" href="#run">See the run</a>
+    <a class="btn" href="#menu">See the menu</a>
   </div>
 </header>
 
 <main id="top">
   <div class="wrap hero">
     <div>
-      <p class="kicker">Ice parkour · Godot 4.7</p>
-      <h1 class="display">You don't stop.<br>You only turn.</h1>
-      <p class="lede">Mochi Slide is a pastel ice course. Steer a ninja through crystal lanes, blink past patrols, and reach the gate before your hearts run out.</p>
+      <p class="kicker">Mobile ice slide</p>
+      <h1 class="display">You don't run.<br>You only slide.</h1>
+      <p class="lede">Slide Ninja is a mobile ice game. You are Ninja. There is no run button. Steer with the joystick, tap skills on the screen, and slide through the corridor.</p>
       <div class="actions">
-        <a class="btn" href="#run">See the run</a>
+        <a class="btn" href="#menu">See the menu</a>
         <a class="btn btn-ice" href="#controls">How to slide</a>
       </div>
       <ul class="stats">
-        <li>4 courses</li>
-        <li>5 hearts</li>
-        <li>Q blink · W shield · E speed</li>
+        <li>25 levels planned</li>
+        <li>8 skills</li>
+        <li>Upgrade with gold</li>
       </ul>
     </div>
-    <figure class="frame" id="run">
-      <button class="shot crop" type="button" data-full="shot-run.png">
-        <img src="shot-run.png" alt="Level 2. A ninja slides on blue ice beside a patrolling orc. Score 69, one minute on the clock.">
+    <figure class="frame" id="menu">
+      <button class="shot" type="button" data-full="shot-run.png">
+        <img src="shot-run.png" alt="Main menu. Ninja and the cast stand on the ice under a video sky. Play, shop, heroes, level, bag, and ranks along the bottom.">
       </button>
-      <figcaption>Level 2 — the slide does not have a brake.</figcaption>
+      <figcaption>Main menu.</figcaption>
     </figure>
   </div>
 
@@ -285,36 +285,36 @@
     <div class="wrap controls">
       <div>
         <h2 class="display">How to slide</h2>
-        <p class="sub">Mouse, arrow keys, or the on-screen joystick. Point where you want to go. The ice keeps the speed.</p>
+        <p class="sub">A phone game. Drag the joystick to steer. Skills sit on the screen, not on a keyboard.</p>
         <div class="keys">
-          <div class="key"><b>Q</b><div><strong>Blink</strong><span>A short jump forward. Walls still stop you.</span></div></div>
-          <div class="key"><b>W</b><div><strong>Shield</strong><span>Unlocks on course 1. One hit, shrugged off.</span></div></div>
-          <div class="key"><b>E</b><div><strong>Speed</strong><span>Unlocks on course 2. A burst, then the cooldown.</span></div></div>
+          <div class="key"><b>Joy</b><div><strong>Joystick</strong><span>Point where you want to go. The ice keeps the speed.</span></div></div>
+          <div class="key"><b>Tap</b><div><strong>Skills</strong><span>On-screen buttons. Blink, shield, and speed are in this build. Eight are planned.</span></div></div>
+          <div class="key"><b>Gold</b><div><strong>Upgrade</strong><span>Collect gold. Skills level up with it.</span></div></div>
         </div>
       </div>
       <aside class="note">
-        <p>Touch a patrol and you lose a heart, then come back at the last checkpoint. Five hearts. After that, the course starts over.</p>
-        <p>The glowing gate is the finish. The in-game menus are in Turkish — Seviye is the level, Kilitli means locked.</p>
+        <p>Touch an enemy and you lose a heart. Five hearts, then the level starts over.</p>
+        <p>This build is three corridor levels, then a boss fight. Twenty-five levels are planned.</p>
       </aside>
     </div>
   </section>
 
   <section>
     <div class="wrap">
-      <h2 class="display">The rink</h2>
-      <p class="sub">A video menu, a level select, then the ice. Locked courses stay locked until you earn them.</p>
+      <h2 class="display">The corridor</h2>
+      <p class="sub">Slide past the patrols. This shot is a corridor level, not the boss.</p>
       <div class="pair">
         <figure class="frame">
           <button class="shot" type="button" data-full="shot-menu.png">
-            <img src="shot-menu.png" alt="Main menu. Mochi and the cast stand on the ice under a video sky. Play, shop, heroes, level, bag, and ranks along the bottom.">
+            <img src="shot-menu.png" alt="A corridor level. Ninja slides on blue ice beside a patrolling orc. A joystick and skill buttons sit at the bottom.">
           </button>
-          <figcaption>Main menu — Play drops you onto the ice.</figcaption>
+          <figcaption>Corridor level. You slide past enemies. You do not run.</figcaption>
         </figure>
         <figure class="frame">
           <button class="shot" type="button" data-full="shot-levels.png">
-            <img src="shot-levels.png" alt="Level select. Four courses. Level 1 is selected. Levels 2, 3, and the ice room show as locked.">
+            <img src="shot-levels.png" alt="Level select in the current build. Three corridor levels, then a boss fight. Later entries are locked.">
           </button>
-          <figcaption>Level select — one open, three still frozen.</figcaption>
+          <figcaption>Current build: three corridors, then the boss. Twenty-five levels are planned.</figcaption>
         </figure>
       </div>
     </div>
@@ -324,41 +324,40 @@
     <div class="wrap cast">
       <div>
         <h2 class="display">Who's on the ice</h2>
-        <p class="sub">You are the ninja. Everyone else has a lane, a turn, or a stomp.</p>
+        <p class="sub">You are Ninja. The others wait in the corridor, or in the boss room.</p>
         <div class="cards">
-          <article class="card"><strong>Ninja</strong><p>Skates, blinks, and does not get a brake pedal.</p></article>
-          <article class="card"><strong>Orcs</strong><p>Patrol a straight lane and turn at the ends.</p></article>
-          <article class="card"><strong>Wizards</strong><p>Drift on a curve and fire down the corridor.</p></article>
-          <article class="card"><strong>Yeti</strong><p>Telegraphs a stomp. Leave the patch.</p></article>
-          <article class="card"><strong>Mochi</strong><p>The round one on the menu, waiting at the start.</p></article>
+          <article class="card"><strong>Ninja</strong><p>You. Slides. Does not run.</p></article>
+          <article class="card"><strong>Orcs</strong><p>Patrol the corridor and turn at the ends.</p></article>
+          <article class="card"><strong>Wizards</strong><p>Drift and fire down the lane.</p></article>
+          <article class="card"><strong>Yeti</strong><p>Stomps. Leave the patch.</p></article>
         </div>
       </div>
       <figure class="frame">
-        <button class="shot" type="button" data-full="shot-menu.png">
-          <img src="shot-menu.png" alt="The cast lined up on the menu ice: a green orc, a wizard, Mochi, and a yeti.">
+        <button class="shot" type="button" data-full="shot-run.png">
+          <img src="shot-run.png" alt="The cast lined up on the menu ice, with Ninja in front.">
         </button>
-        <figcaption>Orc, wizard, Mochi, yeti — the welcome party.</figcaption>
+        <figcaption>Ninja and the rest, on the menu ice.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section id="courses">
+  <section id="levels">
     <div class="wrap courses">
       <div>
-        <h2 class="display">Four courses</h2>
-        <p class="sub">Each finish opens the next. The last one is not a corridor.</p>
+        <h2 class="display">The loop</h2>
+        <p class="sub">This build is three corridor levels, then a boss fight. Not the full game. Twenty-five levels are planned. Eight skills, upgraded with gold.</p>
         <div class="cards">
-          <article class="card level"><span class="num">1</span><div><strong>Ice Course 1</strong><p>Learn the slide. Shield unlocks here. In game: Buz parkuru 1.</p></div></article>
-          <article class="card level"><span class="num">2</span><div><strong>Ice Course 2</strong><p>Longer lanes, more patrols. Speed unlocks. Buz parkuru 2.</p></div></article>
-          <article class="card level"><span class="num">3</span><div><strong>Ice Course 3</strong><p>Tighter turns. The ice still does not care. Buz parkuru 3.</p></div></article>
-          <article class="card level"><span class="num">4</span><div><strong>Ice Room</strong><p>A boss arena. Buz odası.</p></div></article>
+          <article class="card level"><span class="num">1</span><div><strong>Corridor</strong><p>Slide past enemies. No run button.</p></div></article>
+          <article class="card level"><span class="num">2</span><div><strong>Corridor</strong><p>Longer lanes. More patrols.</p></div></article>
+          <article class="card level"><span class="num">3</span><div><strong>Corridor</strong><p>Tighter turns. Still only sliding.</p></div></article>
+          <article class="card level"><span class="num">4</span><div><strong>Boss fight</strong><p>After the three corridors. Not another hallway.</p></div></article>
         </div>
       </div>
       <figure class="frame">
         <button class="shot" type="button" data-full="shot-levels.png">
-          <img src="shot-levels.png" alt="Course list with level 1 highlighted and the later courses locked.">
+          <img src="shot-levels.png" alt="Level select. Three corridor levels, then a boss fight. Later entries are locked.">
         </button>
-        <figcaption>Finish one. The next lock opens.</figcaption>
+        <figcaption>The boss is the last of this slice, not a normal level.</figcaption>
       </figure>
     </div>
   </section>
@@ -366,7 +365,7 @@
 
 <div class="wrap">
   <footer>
-    <span>Mochi Slide 0.2.0 · pastel ice, no brakes</span>
+    <span>Slide Ninja · you don't run, you only slide</span>
     <span>Built in Godot 4.7</span>
   </footer>
 </div>

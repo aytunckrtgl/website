@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mochi Slide is a pastel ice parkour. Steer, blink, and reach the finish. You cannot stop.">
+<meta name="theme-color" content="#d7f1fa">
+<title>Mochi Slide — slide, blink, finish</title>
+<link rel="icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14384c;
+    --ink-soft: #3d6478;
+    --ice: #e7f6fc;
+    --line: rgba(20, 56, 76, 0.1);
+    --gold: #f0b01a;
+    --gold-deep: #c98408;
+    --shadow: 0 22px 50px rgba(20, 70, 100, 0.14);
+    --radius: 28px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: Outfit, "Avenir Next", "Segoe UI", sans-serif;
+    background:
+      radial-gradient(900px 520px at 8% -10%, #fff 0%, transparent 58%),
+      radial-gradient(820px 560px at 110% 0%, #b7e6f8 0%, transparent 52%),
+      radial-gradient(680px 480px at 80% 110%, #d7f3cf 0%, transparent 48%),
+      var(--ice);
+    line-height: 1.5;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .display { font-family: "Lilita One", "Arial Rounded MT Bold", sans-serif; letter-spacing: 0.03em; line-height: 0.95; }
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 14px 0;
+    backdrop-filter: blur(16px);
+    background: rgba(231, 246, 252, 0.78);
+    border-bottom: 1px solid transparent;
+  }
+  .nav-inner { display: flex; align-items: center; gap: 18px; width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Lilita One", sans-serif; letter-spacing: 0.04em; font-size: 22px; }
+  .brand img { width: 36px; height: 36px; border-radius: 50%; background: #fff; box-shadow: 0 4px 0 #b7d7e6; }
+  .nav-links { display: flex; gap: 6px; margin-left: auto; }
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 12px;
+    border-radius: 999px;
+  }
+  .nav-links a:hover { background: rgba(255, 255, 255, 0.7); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 22px;
+    font-family: "Lilita One", sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    cursor: pointer;
+    color: #3d2a00;
+    background: linear-gradient(#ffe56a, #f0b01a 55%, #e39a08);
+    box-shadow: 0 7px 0 var(--gold-deep), 0 14px 24px rgba(201, 132, 8, 0.28);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(4px); box-shadow: 0 3px 0 var(--gold-deep); }
+  .btn-ice {
+    color: var(--ink);
+    background: linear-gradient(#fff, #d7f1fa);
+    box-shadow: 0 7px 0 #9fd0e4, 0 14px 24px rgba(80, 150, 180, 0.16);
+  }
+  .btn-ice:active { box-shadow: 0 3px 0 #9fd0e4; }
+  .btn:focus-visible, .shot:focus-visible, .nav-links a:focus-visible {
+    outline: 3px solid #1d4e66;
+    outline-offset: 3px;
+  }
+
+  .hero { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 48px; align-items: center; padding: 42px 0 28px; }
+  .kicker { margin: 0 0 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-size: 13px; color: #1d6f8c; }
+  h1 { margin: 0; font-size: clamp(56px, 8vw, 92px); }
+  .lede { margin: 18px 0 0; max-width: 38ch; font-size: 20px; color: var(--ink-soft); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding: 0; list-style: none; }
+  .stats li {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #fff;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-weight: 650;
+    box-shadow: 0 8px 20px rgba(20, 70, 100, 0.06);
+  }
+
+  .frame {
+    margin: 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid #fff;
+    border-radius: 32px;
+    box-shadow: var(--shadow);
+  }
+  .shot {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: #071820;
+    border-radius: 22px;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  .shot img { width: 100%; height: auto; }
+  .crop { aspect-ratio: 16 / 9; }
+  .crop img { width: 100%; height: 124%; object-fit: cover; object-position: center 42%; transform: translateY(-8%); }
+  figcaption { margin: 10px 8px 4px; color: var(--ink-soft); font-size: 14px; font-weight: 600; }
+
+  section { padding: 64px 0; }
+  h2 { margin: 0 0 10px; font-size: clamp(36px, 5vw, 56px); }
+  .sub { margin: 0 0 28px; max-width: 52ch; color: var(--ink-soft); font-size: 18px; }
+
+  .controls { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: start; }
+  .keys { display: grid; gap: 12px; }
+  .key {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 14px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #fff;
+    border-radius: 22px;
+    padding: 14px;
+    box-shadow: 0 10px 24px rgba(20, 70, 100, 0.06);
+  }
+  .key b {
+    display: grid;
+    place-items: center;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(#fff, #d5eef8);
+    box-shadow: 0 5px 0 #9fd0e4;
+    font-family: "Lilita One", sans-serif;
+    font-size: 22px;
+  }
+  .key strong { display: block; }
+  .key span { color: var(--ink-soft); font-size: 15px; }
+  .note {
+    background: #14384c;
+    color: #e7f6fc;
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .note p { margin: 0 0 12px; }
+  .note p:last-child { margin: 0; color: #b7dbea; }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .cast, .courses { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 36px; align-items: center; }
+  .courses { grid-template-columns: 1.1fr 0.9fr; }
+  .cards { display: grid; gap: 12px; }
+  .card {
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 16px 18px;
+  }
+  .card strong { font-family: "Lilita One", sans-serif; letter-spacing: 0.03em; font-size: 20px; font-weight: 400; }
+  .card p { margin: 4px 0 0; color: var(--ink-soft); }
+  .level { display: flex; gap: 14px; align-items: center; }
+  .num {
+    flex: 0 0 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: #14384c;
+    color: #fff;
+    font-family: "Lilita One", sans-serif;
+    font-size: 22px;
+  }
+
+  footer {
+    padding: 28px 0 48px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: none;
+    place-items: center;
+    padding: 24px;
+    background: rgba(8, 24, 34, 0.82);
+  }
+  .lightbox.open { display: grid; }
+  .lightbox img { max-width: min(1200px, 100%); max-height: 86vh; border-radius: 16px; }
+  .lightbox button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 860px) {
+    .hero, .controls, .pair, .cast, .courses { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    h1 { font-size: 58px; }
+    section { padding: 42px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="icon.png" alt="">Mochi Slide</a>
+    <nav class="nav-links" aria-label="Page">
+      <a href="#run">Run</a>
+      <a href="#controls">Controls</a>
+      <a href="#cast">Cast</a>
+      <a href="#courses">Courses</a>
+    </nav>
+    <a class="btn" href="#run">See the run</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <p class="kicker">Ice parkour · Godot 4.7</p>
+      <h1 class="display">You don't stop.<br>You only turn.</h1>
+      <p class="lede">Mochi Slide is a pastel ice course. Steer a ninja through crystal lanes, blink past patrols, and reach the gate before your hearts run out.</p>
+      <div class="actions">
+        <a class="btn" href="#run">See the run</a>
+        <a class="btn btn-ice" href="#controls">How to slide</a>
+      </div>
+      <ul class="stats">
+        <li>4 courses</li>
+        <li>5 hearts</li>
+        <li>Q blink · W shield · E speed</li>
+      </ul>
+    </div>
+    <figure class="frame" id="run">
+      <button class="shot crop" type="button" data-full="shot-run.png">
+        <img src="shot-run.png" alt="Level 2. A ninja slides on blue ice beside a patrolling orc. Score 69, one minute on the clock.">
+      </button>
+      <figcaption>Level 2 — the slide does not have a brake.</figcaption>
+    </figure>
+  </div>
+
+  <section id="controls">
+    <div class="wrap controls">
+      <div>
+        <h2 class="display">How to slide</h2>
+        <p class="sub">Mouse, arrow keys, or the on-screen joystick. Point where you want to go. The ice keeps the speed.</p>
+        <div class="keys">
+          <div class="key"><b>Q</b><div><strong>Blink</strong><span>A short jump forward. Walls still stop you.</span></div></div>
+          <div class="key"><b>W</b><div><strong>Shield</strong><span>Unlocks on course 1. One hit, shrugged off.</span></div></div>
+          <div class="key"><b>E</b><div><strong>Speed</strong><span>Unlocks on course 2. A burst, then the cooldown.</span></div></div>
+        </div>
+      </div>
+      <aside class="note">
+        <p>Touch a patrol and you lose a heart, then come back at the last checkpoint. Five hearts. After that, the course starts over.</p>
+        <p>The glowing gate is the finish. The in-game menus are in Turkish — Seviye is the level, Kilitli means locked.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="display">The rink</h2>
+      <p class="sub">A video menu, a level select, then the ice. Locked courses stay locked until you earn them.</p>
+      <div class="pair">
+        <figure class="frame">
+          <button class="shot" type="button" data-full="shot-menu.png">
+            <img src="shot-menu.png" alt="Main menu. Mochi and the cast stand on the ice under a video sky. Play, shop, heroes, level, bag, and ranks along the bottom.">
+          </button>
+          <figcaption>Main menu — Play drops you onto the ice.</figcaption>
+        </figure>
+        <figure class="frame">
+          <button class="shot" type="button" data-full="shot-levels.png">
+            <img src="shot-levels.png" alt="Level select. Four courses. Level 1 is selected. Levels 2, 3, and the ice room show as locked.">
+          </button>
+          <figcaption>Level select — one open, three still frozen.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="cast">
+    <div class="wrap cast">
+      <div>
+        <h2 class="display">Who's on the ice</h2>
+        <p class="sub">You are the ninja. Everyone else has a lane, a turn, or a stomp.</p>
+        <div class="cards">
+          <article class="card"><strong>Ninja</strong><p>Skates, blinks, and does not get a brake pedal.</p></article>
+          <article class="card"><strong>Orcs</strong><p>Patrol a straight lane and turn at the ends.</p></article>
+          <article class="card"><strong>Wizards</strong><p>Drift on a curve and fire down the corridor.</p></article>
+          <article class="card"><strong>Yeti</strong><p>Telegraphs a stomp. Leave the patch.</p></article>
+          <article class="card"><strong>Mochi</strong><p>The round one on the menu, waiting at the start.</p></article>
+        </div>
+      </div>
+      <figure class="frame">
+        <button class="shot" type="button" data-full="shot-menu.png">
+          <img src="shot-menu.png" alt="The cast lined up on the menu ice: a green orc, a wizard, Mochi, and a yeti.">
+        </button>
+        <figcaption>Orc, wizard, Mochi, yeti — the welcome party.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="courses">
+    <div class="wrap courses">
+      <div>
+        <h2 class="display">Four courses</h2>
+        <p class="sub">Each finish opens the next. The last one is not a corridor.</p>
+        <div class="cards">
+          <article class="card level"><span class="num">1</span><div><strong>Ice Course 1</strong><p>Learn the slide. Shield unlocks here. In game: Buz parkuru 1.</p></div></article>
+          <article class="card level"><span class="num">2</span><div><strong>Ice Course 2</strong><p>Longer lanes, more patrols. Speed unlocks. Buz parkuru 2.</p></div></article>
+          <article class="card level"><span class="num">3</span><div><strong>Ice Course 3</strong><p>Tighter turns. The ice still does not care. Buz parkuru 3.</p></div></article>
+          <article class="card level"><span class="num">4</span><div><strong>Ice Room</strong><p>A boss arena. Buz odası.</p></div></article>
+        </div>
+      </div>
+      <figure class="frame">
+        <button class="shot" type="button" data-full="shot-levels.png">
+          <img src="shot-levels.png" alt="Course list with level 1 highlighted and the later courses locked.">
+        </button>
+        <figcaption>Finish one. The next lock opens.</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <span>Mochi Slide 0.2.0 · pastel ice, no brakes</span>
+    <span>Built in Godot 4.7</span>
+  </footer>
+</div>
+
+<div class="lightbox" id="light" hidden>
+  <button type="button" aria-label="Close">×</button>
+  <img alt="">
+</div>
+<script>
+  const light = document.getElementById("light");
+  const full = light.querySelector("img");
+  document.querySelectorAll(".shot").forEach((shot) => {
+    shot.addEventListener("click", () => {
+      full.src = shot.dataset.full;
+      full.alt = shot.querySelector("img").alt;
+      light.hidden = false;
+      light.classList.add("open");
+    });
+  });
+  light.addEventListener("click", () => {
+    light.classList.remove("open");
+    light.hidden = true;
+    full.removeAttribute("src");
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") light.click();
+  });
+</script>
+</body>
+</html>

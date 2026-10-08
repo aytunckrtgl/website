@@ -173,6 +173,9 @@
   .note p:last-child { margin: 0; color: #b7dbea; }
 
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .solo { max-width: 860px; }
+  .portraits { margin-top: 28px; }
+  .portraits img { background: #fff; }
   .cast, .courses { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 36px; align-items: center; }
   .courses { grid-template-columns: 1.1fr 0.9fr; }
   .cards { display: grid; gap: 12px; }
@@ -250,6 +253,7 @@
     <nav class="nav-links" aria-label="Page">
       <a href="#menu">Menu</a>
       <a href="#controls">Controls</a>
+      <a href="#boss">Boss</a>
       <a href="#cast">Cast</a>
       <a href="#levels">Levels</a>
     </nav>
@@ -302,63 +306,66 @@
   <section>
     <div class="wrap">
       <h2 class="display">The corridor</h2>
-      <p class="sub">Slide past the patrols. This shot is a corridor level, not the boss.</p>
-      <div class="pair">
-        <figure class="frame">
-          <button class="shot" type="button" data-full="shot-menu.png">
-            <img src="shot-menu.png" alt="A corridor level. Ninja slides on blue ice beside a patrolling orc. A joystick and skill buttons sit at the bottom.">
-          </button>
-          <figcaption>Corridor level. You slide past enemies. You do not run.</figcaption>
-        </figure>
-        <figure class="frame">
-          <button class="shot" type="button" data-full="shot-levels.png">
-            <img src="shot-levels.png" alt="Level select in the current build. Three corridor levels, then a boss fight. Later entries are locked.">
-          </button>
-          <figcaption>Current build: three corridors, then the boss. Twenty-five levels are planned.</figcaption>
-        </figure>
-      </div>
+      <p class="sub">Slide past the patrols. You do not run.</p>
+      <figure class="frame solo">
+        <button class="shot" type="button" data-full="shot-menu.png">
+          <img src="shot-menu.png" alt="A corridor level. Ninja slides on blue ice beside a patrolling orc. A joystick and skill buttons sit at the bottom.">
+        </button>
+        <figcaption>Corridor level. Slide past the enemies.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="boss">
+    <div class="wrap">
+      <h2 class="display">The boss</h2>
+      <p class="sub">Three corridor levels, then the boss stage. Clear it, and the theme changes. Ice gives way to desert, and the worlds keep changing.</p>
+      <figure class="frame solo">
+        <button class="shot" type="button" data-full="shot-levels.png">
+          <img src="shot-levels.png" alt="The boss stage after three corridor levels. The last room of this set is the boss, not another hallway.">
+        </button>
+        <figcaption>Boss after the third corridor. Then a new theme.</figcaption>
+      </figure>
     </div>
   </section>
 
   <section id="cast">
-    <div class="wrap cast">
-      <div>
-        <h2 class="display">Who's on the ice</h2>
-        <p class="sub">You are Ninja. The others wait in the corridor, or in the boss room.</p>
-        <div class="cards">
-          <article class="card"><strong>Ninja</strong><p>You. Slides. Does not run.</p></article>
-          <article class="card"><strong>Orcs</strong><p>Patrol the corridor and turn at the ends.</p></article>
-          <article class="card"><strong>Wizards</strong><p>Drift and fire down the lane.</p></article>
-          <article class="card"><strong>Yeti</strong><p>Stomps. Leave the patch.</p></article>
-        </div>
+    <div class="wrap">
+      <h2 class="display">Who's on the ice</h2>
+      <p class="sub">You are Ninja. The others wait in the corridor, or in the boss room.</p>
+      <div class="cards">
+        <article class="card"><strong>Ninja</strong><p>You. Slides. Does not run.</p></article>
+        <article class="card"><strong>Orcs</strong><p>Patrol the corridor and turn at the ends.</p></article>
+        <article class="card"><strong>Wizard</strong><p>Drifts and fires down the lane.</p></article>
+        <article class="card"><strong>Yeti</strong><p>Stomps. Leave the patch.</p></article>
       </div>
-      <figure class="frame">
-        <button class="shot" type="button" data-full="shot-run.png">
-          <img src="shot-run.png" alt="The cast lined up on the menu ice, with Ninja in front.">
-        </button>
-        <figcaption>Ninja and the rest, on the menu ice.</figcaption>
-      </figure>
+      <div class="pair portraits">
+        <figure class="frame">
+          <button class="shot" type="button" data-full="wizard.png">
+            <img src="wizard.png" alt="The wizard, blue coat and gold trim, staff raised.">
+          </button>
+          <figcaption>Wizard.</figcaption>
+        </figure>
+        <figure class="frame">
+          <button class="shot" type="button" data-full="yeti.png">
+            <img src="yeti.png" alt="The yeti, white fur and a horned crown, club in hand.">
+          </button>
+          <figcaption>Yeti.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
   <section id="levels">
-    <div class="wrap courses">
-      <div>
-        <h2 class="display">The loop</h2>
-        <p class="sub">This build is three corridor levels, then a boss fight. Not the full game. Twenty-five levels are planned. Eight skills, upgraded with gold.</p>
-        <div class="cards">
-          <article class="card level"><span class="num">1</span><div><strong>Corridor</strong><p>Slide past enemies. No run button.</p></div></article>
-          <article class="card level"><span class="num">2</span><div><strong>Corridor</strong><p>Longer lanes. More patrols.</p></div></article>
-          <article class="card level"><span class="num">3</span><div><strong>Corridor</strong><p>Tighter turns. Still only sliding.</p></div></article>
-          <article class="card level"><span class="num">4</span><div><strong>Boss fight</strong><p>After the three corridors. Not another hallway.</p></div></article>
-        </div>
+    <div class="wrap">
+      <h2 class="display">The loop</h2>
+      <p class="sub">This build is three corridor levels, then a boss fight. Clear the boss and the theme changes. Twenty-five levels are planned. Eight skills, upgraded with gold.</p>
+      <div class="cards">
+        <article class="card level"><span class="num">1</span><div><strong>Corridor</strong><p>Slide past enemies. No run button.</p></div></article>
+        <article class="card level"><span class="num">2</span><div><strong>Corridor</strong><p>Longer lanes. More patrols.</p></div></article>
+        <article class="card level"><span class="num">3</span><div><strong>Corridor</strong><p>Tighter turns. Still only sliding.</p></div></article>
+        <article class="card level"><span class="num">4</span><div><strong>Boss fight</strong><p>After the three corridors. Then a new theme.</p></div></article>
       </div>
-      <figure class="frame">
-        <button class="shot" type="button" data-full="shot-levels.png">
-          <img src="shot-levels.png" alt="Level select. Three corridor levels, then a boss fight. Later entries are locked.">
-        </button>
-        <figcaption>The boss is the last of this slice, not a normal level.</figcaption>
-      </figure>
     </div>
   </section>
 </main>

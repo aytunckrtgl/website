@@ -52,8 +52,10 @@
     border-bottom: 1px solid transparent;
   }
   .nav-inner { display: flex; align-items: center; gap: 18px; width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: "Lilita One", sans-serif; letter-spacing: 0.04em; font-size: 22px; }
-  .brand img { width: 36px; height: 36px; border-radius: 50%; background: #fff; box-shadow: 0 4px 0 #b7d7e6; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand img { width: auto; height: 56px; border-radius: 10px; background: #000; }
+  .logo-mark { width: auto; height: 108px; border-radius: 16px; margin: 0 0 18px; }
+  footer img { height: 48px; width: auto; border-radius: 8px; }
   .nav-links { display: flex; gap: 6px; margin-left: auto; }
   .nav-links a {
     text-decoration: none;
@@ -249,7 +251,7 @@
 <body>
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top"><img src="icon.png" alt="">Slide Ninja</a>
+    <a class="brand" href="#top"><img src="logo.png" alt="KRT Software"></a>
     <nav class="nav-links" aria-label="Page">
       <a href="#menu">Menu</a>
       <a href="#controls">Controls</a>
@@ -264,6 +266,7 @@
 <main id="top">
   <div class="wrap hero">
     <div>
+      <img class="logo-mark" src="logo.png" alt="KRT Software">
       <p class="kicker">Mobile ice slide</p>
       <h1 class="display">You don't run.<br>You only slide.</h1>
       <p class="lede">Slide Ninja is a mobile ice game. You are Ninja. There is no run button. Steer with the joystick, tap skills on the screen, and slide through the corridor.</p>
@@ -372,7 +375,7 @@
 
 <div class="wrap">
   <footer>
-    <span>Slide Ninja · you don't run, you only slide</span>
+    <span><img src="logo.png" alt="KRT Software"></span>
     <span>Built in Godot 4.7</span>
   </footer>
 </div>
